@@ -1,5 +1,3 @@
 # CifradoVignere
 
-int main(){
 
-};
