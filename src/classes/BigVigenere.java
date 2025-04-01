@@ -1,13 +1,43 @@
 package classes;
+import java.util.Scanner;
 
 public class BigVigenere {
 
     private int[] key;
     private char[][] alphabet;
 
-    public BigVigenere(int[] key, char[][] alphabet) {
-        this.key = key;
-        this.alphabet = alphabet;
+    public BigVigenere() {
+
+        System.out.print("Ingrese clave: ");
+        Scanner sc = new Scanner(System.in);
+        String clave = sc.next();
+
+        for(int i = 0; i < clave.length(); i++) {
+
+            key[i] = Integer.parseInt(String.valueOf(clave.charAt(i)));
+
+        }
+
+        String aux = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        key = new int[clave.length()];
+        alphabet = new char[aux.length()][aux.length()];
+
+        for(int i = 0; i < clave.length(); i++){
+            key[i] = Integer.parseInt(String.valueOf(clave.charAt(i)));
+        }
+
+        for(int i=0; i<aux.length(); i++){
+            alphabet[i][0] = aux.charAt(i);
+            int x = i+1;
+            for(int j = 1; j<aux.length(); j++){
+                if(x == aux.length()){
+                    x = 0;
+                }
+                alphabet[i][j] = aux.charAt(x);
+                x++;
+            }
+        }
+
     }
 
     public BigVigenere(String numericKey){
@@ -33,11 +63,35 @@ public class BigVigenere {
         }
     }
 
-    public String encrypt(String message){
+    public String encrypt(String message) {
+
+        String encrypt = "";
+
+        int x = 0;
+
+        for(int i=0; i<message.length(); i++){
+
+            if(message.charAt(i) == ' '){
+
+                encrypt = encrypt + " ";
+                x++;
+            }
+
+            else{
+
+                encrypt = encrypt + alphabet[message.charAt(i)][key[x]];
+            }
+        }
+
+        return encrypt;
 
     }
 
     public String decrypt(String encryptedMessage) {
+
+        String decrypt = "";
+
+        return decrypt;
 
     }
 
@@ -46,11 +100,13 @@ public class BigVigenere {
     }
 
     public char search(int position){
-
+        char search = ' ';
+        return search;
     }
 
     public char optimalSearch(int position){
-
+        char search = ' ';
+        return search;
     }
 
     public void imprimir(){
