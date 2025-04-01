@@ -1,4 +1,4 @@
-package src;
+package classes;
 
 public class BigVigenere {
 
@@ -32,4 +32,35 @@ public class BigVigenere {
             }
         }
     }
+
+    public String encrypt(String message){
+
+    }
+
+    public String decrypt(String encryptedMessage) {
+
+    }
+
+    public void reEncrypt() {
+
+    }
+
+    public char search(int position){
+
+    }
+
+    public char optimalSearch(int position){
+
+    }
+
+    public void imprimir(){
+
+        for(int i=0; i<62; i++){
+            for(int j=0; j<62; j++){
+                System.out.print(alphabet[j][i]);
+            }
+            System.out.println("");
+        }
+    }
+
 }
