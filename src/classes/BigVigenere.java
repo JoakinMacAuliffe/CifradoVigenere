@@ -12,19 +12,15 @@ public class BigVigenere {
         Scanner sc = new Scanner(System.in);
         String clave = sc.next();
 
+        key = new int[clave.length()];
+
         for(int i = 0; i < clave.length(); i++) {
 
             key[i] = Integer.parseInt(String.valueOf(clave.charAt(i)));
         }
 
         String aux = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        key = new int[clave.length()];
         alphabet = new char[aux.length()][aux.length()];
-
-        for(int i = 0; i < clave.length(); i++){
-
-            key[i] = Integer.parseInt(String.valueOf(clave.charAt(i)));
-        }
 
         for(int i=0; i<aux.length(); i++){
 
@@ -72,7 +68,7 @@ public class BigVigenere {
         }
     }
 
-    public String encrypt(String message) {
+    public String encrypt(String message) { //hay que arreglar algo aca porque me tira un error
 
         String encrypt = "";
         int x = 0;
@@ -86,12 +82,12 @@ public class BigVigenere {
             }
             else{
 
-                if(x == key.length){
+                if(x >= key.length){
 
                     x = 0;
                 }
 
-                encrypt = encrypt + alphabet[message.charAt(i)][key[x]];
+                encrypt = encrypt + String.valueOf(alphabet[message.charAt(i)][key[x]]);
                 x++;
             }
         }
@@ -106,13 +102,14 @@ public class BigVigenere {
 
         for(int i = 0; i<encryptedMessage.length(); i++){
 
-            if(encryptedMessage.charAt(x) == ' '){
+            if(encryptedMessage.charAt(i) == ' '){
 
                 decrypt = decrypt + " ";
+                x++;
             }
             else{
 
-                if(x == key.length){
+                if(x >= key.length){
 
                     x = 0;
                 }
@@ -121,7 +118,7 @@ public class BigVigenere {
 
                     if(alphabet[j][key[x]] == encryptedMessage.charAt(i)){
 
-                        decrypt = decrypt + alphabet[j][0];
+                        decrypt = decrypt + String.valueOf(alphabet[j][0]);
                         x++;
                         break;
                     }
