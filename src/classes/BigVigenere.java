@@ -71,25 +71,38 @@ public class BigVigenere {
     public String encrypt(String message) { //hay que arreglar algo aca porque me tira un error
 
         String encrypt = "";
-        int x = 0;
+        int x = 0; //X es el índice de la llave
+        int[] index = new int[message.length()];
 
-        for(int i=0; i<message.length(); i++){
+        for(int i = 0; i < alphabet.length; i++) { //Crear un arreglo con las posiciones index de cada letra de la palabra
+            if (alphabet[i][0] == message.charAt(x)) {
+                if(message.charAt(x) == ' '){
+                    i = 0;
+                    x++;
+                }
+                index[x] = i;
+                i = 0;
+                x++;
+            }
+        }
 
+        x = 0;
+
+        for(int i = 0; i < message.length(); i++){
             if(message.charAt(i) == ' '){
-
                 encrypt = encrypt + " ";
                 x++;
-            }
-            else{
-
+            }else{
                 if(x >= key.length){
-
                     x = 0;
                 }
-
-                encrypt = encrypt + String.valueOf(alphabet[message.charAt(i)][key[x]]);
+                encrypt = encrypt + alphabet[index[i]][key[x]];
                 x++;
             }
+        }
+
+        for(int i = 0; i < index.length; i++) {
+            System.out.print(index[i] + " ");
         }
 
         return encrypt;
