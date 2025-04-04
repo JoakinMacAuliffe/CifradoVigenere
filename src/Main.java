@@ -12,10 +12,12 @@ public class Main {
         //num = sc.next();
 
         num = "1234";
-        word = "hola como estas";
+        word = "sergiooo hola";
 
         BigVigenere bv = new BigVigenere(num);
-        System.out.println(bv.encrypt(word));
+        System.out.print(word + " = ");
+        System.out.print(bv.encrypt(word));
+
 
         //System.out.println("Ingrese el mensaje: ");
         //word = sc.next();

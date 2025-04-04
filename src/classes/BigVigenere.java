@@ -68,25 +68,32 @@ public class BigVigenere {
         }
     }
 
-    public String encrypt(String message) { //hay que arreglar algo aca porque me tira un error
+    public int[] getCharIndex(String message) {
 
-        String encrypt = "";
-        int x = 0; //X es el índice de la llave
         int[] index = new int[message.length()];
+        int position = 0;
 
-        for(int i = 0; i < alphabet.length; i++) { //Crear un arreglo con las posiciones index de cada letra de la palabra
-            if (alphabet[i][0] == message.charAt(x)) {
-                if(message.charAt(x) == ' '){
-                    i = 0;
-                    x++;
+        while (position < message.length()) {
+            if(message.charAt(position) == ' '){
+                index[position] = -1;
+                position++;
+            } else {
+                for(int i = 0; i < alphabet.length; i++) {
+                    if(message.charAt(position) == alphabet[i][0]) {
+                        index[position] = i;
+                        position++;
+                        break;
+                    }
                 }
-                index[x] = i;
-                i = 0;
-                x++;
             }
         }
+        return index;
+    }
 
-        x = 0;
+    public String encrypt(String message) {
+
+        String encrypt = "";
+        int x = 0;
 
         for(int i = 0; i < message.length(); i++){
             if(message.charAt(i) == ' '){
@@ -96,15 +103,10 @@ public class BigVigenere {
                 if(x >= key.length){
                     x = 0;
                 }
-                encrypt = encrypt + alphabet[index[i]][key[x]];
+                encrypt = encrypt + alphabet[getCharIndex(message)[i]][key[x]-1];
                 x++;
             }
         }
-
-        for(int i = 0; i < index.length; i++) {
-            System.out.print(index[i] + " ");
-        }
-
         return encrypt;
     }
 
@@ -170,7 +172,7 @@ public class BigVigenere {
                 System.out.print(alphabet[j][i]);
             }
 
-            System.out.println("");
+            System.out.println(" ");
         }
     }
 
