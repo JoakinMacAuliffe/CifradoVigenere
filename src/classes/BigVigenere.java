@@ -46,7 +46,6 @@ public class BigVigenere {
         alphabet = new char[aux.length()][aux.length()];
 
         for(int i = 0; i < numericKey.length(); i++){
-
             key[i] = Integer.parseInt(String.valueOf(numericKey.charAt(i)));
         }
 
@@ -58,7 +57,6 @@ public class BigVigenere {
             for(int j = 1; j<aux.length(); j++){
 
                 if(x == aux.length()){
-
                     x = 0;
                 }
 
@@ -93,18 +91,18 @@ public class BigVigenere {
     public String encrypt(String message) {
 
         String encrypt = "";
-        int x = 0;
+        int position = 0;
+        int[] charIndex = getCharIndex(message);
 
         for(int i = 0; i < message.length(); i++){
             if(message.charAt(i) == ' '){
-                encrypt = encrypt + " ";
-                x++;
+                encrypt = encrypt + ' ';
             }else{
-                if(x >= key.length){
-                    x = 0;
+                if(position >= key.length){
+                    position = 0;
                 }
-                encrypt = encrypt + alphabet[getCharIndex(message)[i]][key[x]-1];
-                x++;
+                encrypt = encrypt + alphabet[charIndex[i]][key[position] - 1];
+                position++;
             }
         }
         return encrypt;
@@ -113,28 +111,20 @@ public class BigVigenere {
     public String decrypt(String encryptedMessage) {
 
         String decrypt = "";
-        int x = 0;
+        int position = 0;
 
-        for(int i = 0; i<encryptedMessage.length(); i++){
+        for(int i = 0; i < encryptedMessage.length(); i++){
 
             if(encryptedMessage.charAt(i) == ' '){
-
-                decrypt = decrypt + " ";
-                x++;
-            }
-            else{
-
-                if(x >= key.length){
-
-                    x = 0;
+                decrypt = decrypt + ' ';
+            }else{
+                if(position >= key.length){
+                    position = 0;
                 }
-
-                for(int j=0; j<62; j++){
-
-                    if(alphabet[j][key[x]] == encryptedMessage.charAt(i)){
-
-                        decrypt = decrypt + String.valueOf(alphabet[j][0]);
-                        x++;
+                for(int j = 0; j < alphabet.length; j++){
+                    if(alphabet[j][key[position]] == encryptedMessage.charAt(i)){
+                        decrypt = decrypt + alphabet[j][1];
+                        position++;
                         break;
                     }
                 }
@@ -146,6 +136,24 @@ public class BigVigenere {
     }
 
     public void reEncrypt() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese mensaje encriptado: ");
+        String encryptedMessage = scanner.nextLine();
+
+        String message = decrypt(encryptedMessage);
+
+        System.out.print("Ingrese nueva clave: ");
+        String inputKey = scanner.nextLine();
+
+        int[] newKey = new int[inputKey.length()];
+
+        for(int i = 0; i < newKey.length; i++){
+            key[i] = Integer.parseInt(String.valueOf(inputKey.charAt(i)));
+        }
+
+        System.out.println("El nuevo mensaje es: " + encrypt(message));
 
     }
 
