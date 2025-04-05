@@ -159,16 +159,23 @@ public class BigVigenere {
 
     public char search(int position){
 
-        char search = ' ';
+        if(position >= alphabet.length || position < 0) {
+            System.out.println("Error: La posicion debe ser mayor a cero y menor a 62.");
+            return 0;
+        }
 
-        return search;
+        for(int i = 0; i < position; i++) {
+            for (int j = 0; j < alphabet.length; j++) {
+                if(j == position){
+                    return alphabet[position][key[0]-1];
+                }
+            }
+        }
+        return 0;
     }
 
     public char optimalSearch(int position){
-
-        char search = ' ';
-
-        return search;
+        return alphabet[position][key[0]-1];
     }
 
     public void imprimir(){
