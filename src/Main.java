@@ -1,3 +1,5 @@
+//MAIN CLASS JUST FOR TESTING PURPOSES
+
 package classes;
 import java.util.Scanner;
 
