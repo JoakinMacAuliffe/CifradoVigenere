@@ -71,11 +71,16 @@ public class BigVigenere {
         int position = 0;
 
         while (position < message.length()) {
+
             if(message.charAt(position) == ' '){
+
                 index[position] = -1;
                 position++;
-            } else {
+            }
+            else {
+
                 for(int i = 0; i < alphabet.length; i++) {
+
                     if(message.charAt(position) == alphabet[i][0]) {
                         index[position] = i;
                         position++;
@@ -84,6 +89,7 @@ public class BigVigenere {
                 }
             }
         }
+
         return index;
     }
 
@@ -94,9 +100,12 @@ public class BigVigenere {
         int[] charIndex = getCharIndex(message);
 
         for(int i = 0; i < message.length(); i++){
+
             if(message.charAt(i) == ' '){
                 encrypt = encrypt + ' ';
-            }else{
+            }
+            else{
+
                 if(position >= key.length){
                     position = 0;
                 }
@@ -115,14 +124,19 @@ public class BigVigenere {
         for(int i = 0; i < encryptedMessage.length(); i++){
 
             if(encryptedMessage.charAt(i) == ' '){
+
                 decrypt = decrypt + ' ';
-            }else{
+            }
+            else{
+
                 if(position >= key.length){
                     position = 0;
                 }
+
                 for(int j = 0; j < alphabet.length; j++){
-                    if(alphabet[j][key[position]] == encryptedMessage.charAt(i)){
-                        decrypt = decrypt + alphabet[j][1];
+
+                    if(alphabet[j][key[position]-1] == encryptedMessage.charAt(i)){
+                        decrypt = decrypt + alphabet[j][0];
                         position++;
                         break;
                     }
@@ -158,27 +172,40 @@ public class BigVigenere {
 
     public char search(int position){
 
-        if(position >= alphabet.length || position < 0) {
-            System.out.println("Error: La posicion debe ser mayor a cero y menor a " + alphabet.length + ".");
-            return 0;
+        if(position > (alphabet.length* alphabet.length-1) || position < 0) {
+
+            System.out.println("Error: La posicion debe ser positiva y menor a " + alphabet.length* alphabet.length + ".");
+            return '.';
         }
 
-        for(int i = 0; i < position; i++) {
-            for (int j = 0; j < alphabet.length; j++) {
-                if(j == position){
-                    return alphabet[position][key[0]-1];
-                }
+        int x = 0, y = 0, contador = 0;
+
+        while(contador != position){
+
+            if(x == alphabet.length){
+
+                x = 0;
+                y++;
+            }
+            else{
+
+                x++;
+                contador++;
             }
         }
-        return 0;
+
+        return alphabet[x][y];
     }
 
     public char optimalSearch(int position){
-        if(position >= alphabet.length || position < 0) {
-            System.out.println("Error: La posicion debe ser mayor a cero y menor a " + alphabet.length + ".");
-            return 0;
+
+        if(position > (alphabet.length* alphabet.length-1) || position < 0) {
+
+            System.out.println("Error: La posicion debe ser mayor o igual cero y menor a " + alphabet.length* alphabet.length + ".");
+            return '.';
         }
-        return alphabet[position][key[0]-1];
+
+        return alphabet[position % alphabet.length][position / alphabet.length];
     }
 
 }
