@@ -45,7 +45,7 @@ public class Main {
         }
         String message = beeMovieScript;
 
-        // Prueba de metodos encrypt() y decrypt():
+        // Prueba metodos encrypt() y decrypt():
 
         System.out.println("Clave: " + key);
         System.out.println("Largo de la clave: " + keyLength);

@@ -199,7 +199,7 @@ public class BigVigenere {
 
     public char optimalSearch(int position){
 
-        if(position > (alphabet.length* alphabet.length-1) || position < 0) {
+        if(position > (alphabet.length* alphabet.length-1) || position < 0) { //define parametros
 
             System.out.println("Error: La posicion debe ser mayor o igual cero y menor a " + alphabet.length* alphabet.length + ".");
             return '.';
