@@ -173,21 +173,14 @@ public class BigVigenere {
         return 0;
     }
 
-    public char optimalSearch(int position){
-        return alphabet[position][key[0]-1];
+    public void test(){
+        for(int i = 0; i < key.length; i++) {
+            System.out.print(alphabet[key[i]-1][0]);
+        }
     }
 
-    public void imprimir(){
-
-        for(int i=0; i<62; i++){
-
-            for(int j=0; j<62; j++){
-
-                System.out.print(alphabet[j][i]);
-            }
-
-            System.out.println(" ");
-        }
+    public char optimalSearch(int position){
+        return alphabet[position][key[0]-1];
     }
 
 }

@@ -1,0 +1,37 @@
+**Para todos los casos, el mensaje tiene una longitud de 10000 caracteres (messageLength = 10000)**
+
+Caso 1:
+
+    keyLength = 10
+    Tiempo de cifrado = 0.0194953 segundos
+    Tiempo de descrifrado = 0.0096157 segundos
+
+Caso 2:
+
+    keyLength = 50
+    Tiempo de cifrado = 0.0191583 segundos
+    Tiempo de descrifrado = 0.0101986 segundos
+
+Caso 3:
+
+    keyLength = 100
+    Tiempo de cifrado = 0.0183701 segundos
+    Tiempo de descrifrado = 0.0123787 segundos
+
+Caso 4:
+
+    keyLength = 500
+    Tiempo de cifrado = 0.0172813 segundos
+    Tiempo de descrifrado = 0.0100875 segundos
+
+Caso 5:
+
+    keyLength = 1000
+    Tiempo de cifrado = 0.0178333 segundos
+    Tiempo de descrifrado = 0.0101532 segundos
+
+Caso 6:
+
+    keyLength = 5000
+    Tiempo de cifrado = 0.0211726 segundos
+    Tiempo de descrifrado = 0.0154848 segundos
