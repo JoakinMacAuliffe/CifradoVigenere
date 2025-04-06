@@ -159,7 +159,7 @@ public class BigVigenere {
     public char search(int position){
 
         if(position >= alphabet.length || position < 0) {
-            System.out.println("Error: La posicion debe ser mayor a cero y menor a 62.");
+            System.out.println("Error: La posicion debe ser mayor a cero y menor a " + alphabet.length + ".");
             return 0;
         }
 
@@ -174,6 +174,10 @@ public class BigVigenere {
     }
 
     public char optimalSearch(int position){
+        if(position >= alphabet.length || position < 0) {
+            System.out.println("Error: La posicion debe ser mayor a cero y menor a " + alphabet.length + ".");
+            return 0;
+        }
         return alphabet[position][key[0]-1];
     }
 
