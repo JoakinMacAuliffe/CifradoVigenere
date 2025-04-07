@@ -18,7 +18,7 @@ public class BigVigenere {
             key[i] = Integer.parseInt(String.valueOf(clave.charAt(i)));
         }
 
-        String aux = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        String aux = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         alphabet = new char[aux.length()][aux.length()];
 
         for(int i=0; i<aux.length(); i++){
@@ -40,7 +40,7 @@ public class BigVigenere {
 
     public BigVigenere(String numericKey){
 
-        String aux = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        String aux = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         key = new int[numericKey.length()];
         alphabet = new char[aux.length()][aux.length()];
 
